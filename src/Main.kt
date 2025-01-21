@@ -1,13 +1,21 @@
+import obtenerOperacion
+
 fun obtenerTiempo(): Tiempo{
-    val hora = pedirValorInt("Introduce la hora >> ")
-    val minuto = pedirValorInt("Introduce el minuto (ENTER para omitir) >> ")
-    val segundo = pedirValorInt("Introduce el segundo (ENTER para omitir)")
+    var hora = pedirValorInt("Introduce la hora >> ")
+    var minuto = pedirValorInt("Introduce el minuto (ENTER para omitir) >> ")
+    var segundo = pedirValorInt("Introduce el segundo (ENTER para omitir) >> ")
+    val lista = obtenerOperacion(hora, minuto, segundo)
+    hora = lista[0]; minuto = lista[1]; segundo = lista[2]
+
     return Tiempo(hora, minuto, segundo)
 }
 
 
-fun main{
+fun main(){
     val time = obtenerTiempo()
-    //Hacer comprobar Hora, minuto, segundo, para los rangos 0-23, 0-59, 0-59
-
+    println(time)
+    time.incrementar(Tiempo(1,65,125))
+    println(time)
+    time.decrementar(Tiempo(3,7,2))
+    println(time)
 }
