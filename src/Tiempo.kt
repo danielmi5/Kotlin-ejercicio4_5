@@ -4,7 +4,8 @@ class Tiempo(var hora: Int, var minuto: Int, var segundo: Int) {
     constructor(hora: Int): this(hora, 0, 0)
 
     init{
-        // FORAMATE HORAS
+        require(hora >= 0 || minuto >= 0 || segundo >= 0){"ERROR -> Todos los valores deben ser positivos"}
+        // FORMATEO HORAS
         if (segundo > 59) {
             while (segundo > 59) {
                 minuto += segundo / 60
@@ -36,22 +37,23 @@ class Tiempo(var hora: Int, var minuto: Int, var segundo: Int) {
         var h = hora; var m = minuto; var s = segundo
         h -= t.hora
         if (h < 0) return false
-        while(s-t.segundo < 0) {
+        s -= t.segundo
+        m -= t.minuto
+        while(s < 0) {
             m--
-            s = 60 + (s - t.segundo)
+            s += 60
 
-            while (m - t.minuto < 0) {
+            while (m < 0) {
                 h--
-                m = 60 + (m - t.minuto)
+                m += 60
             }
         }
-        s -= t.segundo
 
-        while(m-t.minuto < 0){
+
+        while(m < 0){
             h--
-            m = 60 + (m-t.minuto)
+            m += 60
         }
-        m -= t.minuto
 
         if(h < 0) return false else {
             hora = h; minuto = m; segundo = s
@@ -100,22 +102,23 @@ class Tiempo(var hora: Int, var minuto: Int, var segundo: Int) {
         var h = hora; var m = minuto; var s = segundo
         h -= t.hora
         if (h < 0) return null
-        while(s-t.segundo < 0) {
+        s -= t.segundo
+        m -= t.minuto
+        while(s < 0) {
             m--
-            s = 60 + (s - t.segundo)
+            s += 60
 
-            while (m - t.minuto < 0) {
+            while (m < 0) {
                 h--
-                m = 60 + (m - t.minuto)
+                m += 60
             }
         }
-        s -= t.segundo
 
-        while(m-t.minuto < 0){
+
+        while(m < 0){
             h--
-            m = 60 + (m-t.minuto)
+            m += 60
         }
-        m -= t.minuto
 
         return if(h < 0) null else Tiempo(h, m, s)
     }

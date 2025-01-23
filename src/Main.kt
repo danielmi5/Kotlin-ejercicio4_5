@@ -12,26 +12,36 @@ fun obtenerTiempo(): Tiempo{
 fun main(){
     val time = obtenerTiempo()
     println(time)
-    
+
+    println("Introduce un tiempo para incrementar el anterior")
     if (time.incrementar(obtenerTiempo())) {
         print("Tiempo incrementado: ")
         println(time)
     } else print("ERROR al incrementar: ")
+
+    println("Introduce un tiempo para decrementar el anterior")
     if (time.decrementar(obtenerTiempo())) {
-        println("Tiempo decrementado: ")
+        print("Tiempo decrementado: ")
         println(time)
     } else println("ERROR al decrementar")
 
+    println("\nIntroduce un tiempo para comparar con el anterior: ")
     println("Resultado al comparar: ${time.comparar(obtenerTiempo())}")
 
-    println("Tiempo copiado del objeto: ${time.copiar()}")
+    println("\nTiempo copiado del objeto: ${time.copiar()}")
 
-    println("Tiempo copiado al objeto: ${time.copiar(obtenerTiempo())}")
+    println("\nIntroduce el tiempo a copiar al objeto")
+    time.copiar(obtenerTiempo())
+    println("Tiempo copiado al objeto: $time")
 
+    println("\nIntroduce un tiempo para sumar: ")
     println("Resultado de la suma: ${time.sumar(obtenerTiempo())}")
+    println("\nIntroduce un tiempo para restar: ")
     println("Resultado de la resta: ${time.restar(obtenerTiempo())}")
 
+    println("\nIntroduce un tiempo para comparar: ")
     println("¿Es mayor? ${time.esMayorQue(obtenerTiempo())}")
+    println("\nIntroduce otro tiempo para comparar: ")
     println("¿Es menor? ${time.esMenorQue(obtenerTiempo())}")
 
 
