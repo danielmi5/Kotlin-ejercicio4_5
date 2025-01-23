@@ -26,11 +26,14 @@ class Tiempo(var hora: Int, var minuto: Int, var segundo: Int) {
 
     }
     fun incrementar(t: Tiempo): Boolean{
-        hora += t.hora
-        minuto += t.minuto
-        segundo += t.segundo
+        val h = hora + t.minuto
+        val m = minuto + t.minuto
+        val s = segundo + t.segundo
 
-        if (hora > 23) return false else return true
+        if (h > 23) return false else {
+            hora = h; minuto = m; segundo = s
+            return true
+        }
     }
 
     fun decrementar(t: Tiempo): Boolean{

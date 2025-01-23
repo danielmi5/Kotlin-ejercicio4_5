@@ -17,7 +17,7 @@ fun main(){
     if (time.incrementar(obtenerTiempo())) {
         print("Tiempo incrementado: ")
         println(time)
-    } else print("ERROR al incrementar: ")
+    } else println("ERROR al incrementar: ")
 
     println("Introduce un tiempo para decrementar el anterior")
     if (time.decrementar(obtenerTiempo())) {
@@ -34,7 +34,7 @@ fun main(){
     time.copiar(obtenerTiempo())
     println("Tiempo copiado al objeto: $time")
 
-    println("\nIntroduce un tiempo para sumar: ")
+    println("\nIntroduce un tiempo para sumar con el anterior: ")
     println("Resultado de la suma: ${time.sumar(obtenerTiempo())}")
     println("\nIntroduce un tiempo para restar: ")
     println("Resultado de la resta: ${time.restar(obtenerTiempo())}")
