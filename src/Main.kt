@@ -4,8 +4,6 @@ fun obtenerTiempo(): Tiempo{
     var hora = pedirValorInt("Introduce la hora >> ")
     var minuto = pedirValorInt("Introduce el minuto (ENTER para omitir) >> ")
     var segundo = pedirValorInt("Introduce el segundo (ENTER para omitir) >> ")
-    val lista = obtenerOperacion(hora, minuto, segundo)
-    hora = lista[0]; minuto = lista[1]; segundo = lista[2]
 
     return Tiempo(hora, minuto, segundo)
 }
@@ -14,8 +12,27 @@ fun obtenerTiempo(): Tiempo{
 fun main(){
     val time = obtenerTiempo()
     println(time)
-    time.incrementar(Tiempo(1,65,125))
-    println(time)
-    time.decrementar(Tiempo(3,7,2))
-    println(time)
+    
+    if (time.incrementar(obtenerTiempo())) {
+        print("Tiempo incrementado: ")
+        println(time)
+    } else print("ERROR al incrementar: ")
+    if (time.decrementar(obtenerTiempo())) {
+        println("Tiempo decrementado: ")
+        println(time)
+    } else println("ERROR al decrementar")
+
+    println("Resultado al comparar: ${time.comparar(obtenerTiempo())}")
+
+    println("Tiempo copiado del objeto: ${time.copiar()}")
+
+    println("Tiempo copiado al objeto: ${time.copiar(obtenerTiempo())}")
+
+    println("Resultado de la suma: ${time.sumar(obtenerTiempo())}")
+    println("Resultado de la resta: ${time.restar(obtenerTiempo())}")
+
+    println("¿Es mayor? ${time.esMayorQue(obtenerTiempo())}")
+    println("¿Es menor? ${time.esMenorQue(obtenerTiempo())}")
+
+
 }
